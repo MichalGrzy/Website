@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Usługi Koparko-Ładowarką Adam Grzywiński – roboty ziemne, Legionowo i okolice</title>
+<meta name="description" content="Usługi koparko-ładowarką i minikoparką, Legionowo i okolice: roboty ziemne, wykopy pod fundamenty i przyłącza, przewóz ziemi. Zadzwoń: 602 392 337.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Big+Shoulders+Display:wght@700;900&display=swap">
+<style>
+/* Układ: ciemny pas „asfaltu” z hasłem, pod nim przekrój gruntu jako granica, dalej usługi i kontakt z mapą. */
+:root {
+  --orange: #E26A10;       /* kolor maszyny */
+  --orange-ink: #A94C06;   /* pomarańcz do tekstu na jasnym tle */
+  --asphalt: #1E1B18;
+  --ink: #2B2724;
+  --muted: #6B645E;
+  --paper: #FFFFFF;
+  --concrete: #EFEDEA;
+  --line: #D9D5D0;
+  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 17px/1.6 var(--body);
+}
+a { color: inherit; }
+img, svg, iframe { max-width: 100%; }
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* Pasek górny */
+.top { background: var(--asphalt); color: #fff; }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 14px; }
+.nav { display: flex; align-items: center; gap: 10px; }
+.nav-btn {
+  font: 700 14px/1 var(--body); letter-spacing: .1em; text-transform: uppercase;
+  color: #fff; text-decoration: none; padding: 11px 16px 10px;
+  border: 2px solid #5A524B; transition: border-color .15s, background .15s, color .15s;
+}
+@media (hover: hover) { .nav-btn:hover { border-color: var(--orange); color: var(--orange); } }
+.nav-btn:focus:not(:focus-visible) { outline: none; }
+.nav-btn:active { background: var(--orange); border-color: var(--orange); color: var(--asphalt); }
+.nav-btn.flash { animation: navFlash .7s ease-out; }
+@keyframes navFlash {
+  0%, 35% { background: var(--orange); border-color: var(--orange); color: var(--asphalt); }
+  100% { background: transparent; border-color: #5A524B; color: #fff; }
+}
+@media (prefers-reduced-motion: reduce) { .nav-btn.flash { animation-duration: .3s; } }
+.nav .top-phone { margin-left: 8px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand b { font: 900 22px/1 var(--display); letter-spacing: .04em; text-transform: uppercase; }
+.brand small { display: block; font: 500 12px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; color: #BDB5AD; margin-top: 3px; }
+.top-phone { font: 700 22px/1 var(--display); letter-spacing: .04em; text-decoration: none; color: var(--orange); white-space: nowrap; }
+
+/* Hero */
+/* Zdjęcie w tle: plik tlo.jpg w tym samym folderze co strona. Bez zdjęcia zostaje ciemne tło. */
+.hero {
+  color: #fff;
+  background-color: var(--asphalt);
+  background-image: linear-gradient(90deg, rgba(30,27,24,.92) 0%, rgba(30,27,24,.78) 45%, rgba(30,27,24,.35) 100%), url("tlo.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.hero .wrap { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; padding-block: 72px 88px; }
+.hero h1 {
+  margin: 0;
+  font: 900 clamp(52px, 10vw, 112px)/.88 var(--display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-wrap: balance;
+}
+.hero h1 span { color: var(--orange); display: block; }
+.hero p { margin: 22px 0 30px; max-width: 34ch; font-size: 19px; color: #E6DFD8; }
+.hero h1, .hero p { text-shadow: 0 2px 18px rgba(0,0,0,.45); }
+.cta {
+  display: inline-flex; align-items: baseline; gap: 14px;
+  background: var(--orange); color: var(--asphalt);
+  padding: 14px 24px 12px; text-decoration: none;
+  font: 900 34px/1 var(--display); letter-spacing: .03em;
+  border: 0; transition: background .15s;
+}
+.cta small { font: 700 13px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; }
+.cta:hover { background: #F07B22; }
+.cta:focus-visible, a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+/* Przekrój gruntu */
+.strata { display: block; width: 100%; height: 64px; background: var(--asphalt); }
+.strata-legend {
+  display: flex; flex-wrap: wrap; gap: 6px 22px;
+  font: 500 12px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  padding-block: 12px 0;
+}
+.strata-legend i { display: inline-block; width: 10px; height: 10px; margin-right: 7px; vertical-align: -1px; }
+
+/* Sekcje */
+section { padding-block: 64px; }
+.label { font: 700 13px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--orange-ink); margin: 0 0 12px; }
+h2 { font: 900 clamp(36px, 5vw, 54px)/1 var(--display); text-transform: uppercase; margin: 0 0 36px; text-wrap: balance; }
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 4px solid var(--asphalt); }
+.service { padding: 26px 28px 8px 0; }
+.service + .service { padding-left: 28px; border-left: 1px solid var(--line); }
+.service h3 { font: 700 30px/1 var(--display); text-transform: uppercase; margin: 0 0 12px; letter-spacing: .02em; }
+.service p { margin: 0 0 14px; color: var(--muted); }
+.service ul { margin: 0; padding: 0; list-style: none; }
+.service li { padding: 7px 0; border-top: 1px solid var(--line); }
+.service li::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--orange); margin-right: 10px; vertical-align: 1px; }
+
+/* O nas */
+.about-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: start; }
+.about-grid h2 { margin-bottom: 20px; }
+.about-text p:not(.label) { margin: 0 0 14px; max-width: 60ch; font-size: 18px; }
+.facts { margin: 0; border-top: 4px solid var(--asphalt); }
+.facts div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.facts dt { font: 700 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.facts dd { margin: 0; font: 700 26px/1.1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+#uslugi { padding-top: 0; }
+/* Sprzęt */
+.fleet { background: var(--asphalt); color: #fff; }
+.fleet .label { color: var(--orange); }
+.fleet-grid { display: grid; gap: 24px; }
+.machine { border: 2px solid #3A3531; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+.machine-text { padding: 32px; display: grid; gap: 14px; align-content: center; }
+.photo { position: relative; aspect-ratio: 4 / 3; background: #2A2622; display: grid; place-items: center; overflow: hidden; }
+.photo span { font: 500 13px/1.4 var(--body); letter-spacing: .1em; text-transform: uppercase; color: #8A8178; text-align: center; padding: 16px; border: 2px dashed #4A433D; margin: 20px; }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.machine .tag { font: 700 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--asphalt); background: var(--orange); justify-self: start; padding: 6px 9px 5px; }
+.machine h3 { font: 900 clamp(32px, 4vw, 44px)/1 var(--display); text-transform: uppercase; margin: 0; letter-spacing: .01em; }
+.machine p { margin: 0; color: #CFC7BF; }
+/* Kontakt */
+.contact { background: var(--concrete); }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; align-items: stretch; }
+.phone-big { font: 900 clamp(44px, 6vw, 64px)/1 var(--display); letter-spacing: .02em; text-decoration: none; color: var(--asphalt); display: inline-block; border-bottom: 5px solid var(--orange); padding-bottom: 4px; }
+.contact dl { margin: 32px 0 0; display: grid; gap: 18px; }
+.contact dt { font: 700 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.contact dd { margin: 0; font-size: 18px; }
+.map { position: relative; min-height: 380px; background: var(--line); border: 4px solid var(--asphalt); }
+.map-fallback { position: absolute; inset: 0; margin: 0; display: grid; place-items: center; text-align: center; padding: 20px; color: var(--muted); font-size: 15px; }
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.map-link { display: inline-block; margin-top: 12px; font-weight: 500; color: var(--orange-ink); }
+
+footer { background: var(--asphalt); color: #A8A098; font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 22px; }
+
+@media (max-width: 820px) {
+  .hero { background-image: linear-gradient(rgba(30,27,24,.84), rgba(30,27,24,.84)), url("tlo.jpg"); }
+  .hero .wrap { grid-template-columns: 1fr; gap: 28px; padding-block: 36px 44px; }
+  .services, .about-grid, .machine { grid-template-columns: 1fr; }
+  .machine-text { padding: 24px; }
+  .about-grid { gap: 28px; }
+  .service, .service + .service { padding: 24px 0 10px; border-left: 0; }
+  .service + .service { border-top: 1px solid var(--line); }
+  .contact-grid { grid-template-columns: 1fr; }
+  .map { min-height: 320px; }
+}
+@media (max-width: 480px) {
+  .top-phone { font-size: 19px; }
+  .nav { width: 100%; }
+  .nav-btn { flex: 1; text-align: center; padding-inline: 8px; }
+  .nav .top-phone { display: none; }
+  .cta { font-size: 28px; padding: 12px 18px 10px; }
+  section { padding-block: 48px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cta { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span><b>Usługi Koparko-Ładowarką</b><small>Adam Grzywiński</small></span>
+    </a>
+    <nav class="nav" aria-label="Menu">
+      <a class="nav-btn" href="#o-nas">O nas</a>
+      <a class="nav-btn" href="#kontakt">Kontakt</a>
+      <a class="top-phone" href="tel:+48602392337">602 392 337</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Usługi koparko-<span>ładowarką</span></h1>
+        <p>Roboty ziemne, wykopy i przewóz ziemi na terenie Legionowa i okolic. Przyjadę, wykopię, wyrównam i wywiozę urobek.</p>
+        <a class="cta" href="tel:+48602392337">602 392 337 <small>Zadzwoń</small></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Przekrój gruntu: humus, glina, piasek, żwir -->
+  <svg class="strata" viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 0 H1200 V64 H0Z" fill="#9A9187"/>
+    <path d="M0 0 H1200 V46 C1000 52 820 40 600 48 C380 56 200 42 0 50Z" fill="#C98A4B"/>
+    <path d="M0 0 H1200 V28 C980 34 760 20 560 30 C340 40 180 24 0 32Z" fill="#8A5A34"/>
+    <path d="M0 0 H1200 V12 C1000 16 800 8 600 14 C400 20 200 10 0 16Z" fill="#3D2E22"/>
+  </svg>
+  <div class="wrap">
+    <div class="strata-legend" aria-hidden="true">
+      <span><i style="background:#3D2E22"></i>Humus</span>
+      <span><i style="background:#8A5A34"></i>Glina</span>
+      <span><i style="background:#C98A4B"></i>Piasek</span>
+      <span><i style="background:#9A9187"></i>Żwir</span>
+    </div>
+  </div>
+
+  <section id="o-nas">
+    <div class="wrap about-grid">
+      <div class="about-text">
+        <p class="label">O nas</p>
+        <h2>Roboty ziemne w Legionowie i okolicach</h2>
+        <p>Nazywam się Adam Grzywiński. Wykonuję usługi koparko-ładowarką New Holland i minikoparką na terenie Legionowa i okolic.</p>
+        <p>Zajmuję się wszystkim od wykopu pod przyłącze po przygotowanie całej działki pod budowę. Zadzwoń, opisz co trzeba zrobić, a ustalimy termin i zakres prac.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Obszar działania</dt><dd>Legionowo i okolice</dd></div>
+        <div><dt>Sprzęt</dt><dd>Koparko-ładowarka New Holland, minikoparka</dd></div>
+        <div><dt>Telefon</dt><dd><a href="tel:+48602392337" style="text-decoration:none">602 392 337</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="uslugi">
+    <div class="wrap">
+      <p class="label">Zakres prac</p>
+      <h2>Co robię</h2>
+      <div class="services">
+        <article class="service">
+          <h3>Roboty ziemne</h3>
+          <p>Przygotowanie terenu pod budowę, podjazd lub ogród.</p>
+          <ul>
+            <li>Niwelacja i wyrównanie działki</li>
+            <li>Korytowanie pod kostkę i drogi</li>
+            <li>Zasypywanie i zagęszczanie</li>
+          </ul>
+        </article>
+        <article class="service">
+          <h3>Wykopy</h3>
+          <p>Wykopy pod fundamenty i instalacje, z odkładem lub wywozem ziemi.</p>
+          <ul>
+            <li>Pod fundamenty i ławy</li>
+            <li>Przyłącza wod-kan i prądu</li>
+            <li>Szamba, drenaże, oczka wodne</li>
+          </ul>
+        </article>
+        <article class="service">
+          <h3>Przewóz ziemi</h3>
+          <p>Wywóz urobku z wykopu i dowóz materiału na plac budowy.</p>
+          <ul>
+            <li>Wywóz ziemi z wykopu</li>
+            <li>Dowóz ziemi, piasku, żwiru</li>
+            <li>Załadunek i rozplantowanie</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="fleet" id="sprzet">
+    <div class="wrap">
+      <p class="label">Sprzęt</p>
+      <h2>Nasz sprzęt</h2>
+      <div class="fleet-grid">
+        <article class="machine">
+          <div class="photo"><span>Miejsce na zdjęcie<br>koparko-ladowarka.jpg</span><img src="koparko-ladowarka.jpg" alt="Koparko-ładowarka New Holland" loading="lazy" onerror="this.remove()"></div>
+          <div class="machine-text">
+          <span class="tag">Cięższe zadania</span>
+          <h3>Koparko-ładowarka New Holland</h3>
+          <p>Koparko-ładowarkę wykorzystujemy do cięższych zadań. Dzięki jej wielozadaniowości kończymy pracę szybciej, co pozwala zaoszczędzić czas i pieniądze.</p>
+          </div>
+        </article>
+        <article class="machine">
+          <div class="photo"><span>Miejsce na zdjęcie<br>minikoparka.jpg</span><img src="minikoparka.jpg" alt="Minikoparka" loading="lazy" onerror="this.remove()"></div>
+          <div class="machine-text">
+          <span class="tag">Trudno dostępne miejsca</span>
+          <h3>Minikoparka</h3>
+          <p>Minikoparkę wykorzystujemy do mniejszych zadań. Ma gumowe gąsienice, więc bez problemu wjeżdża na posesje z kostką brukową. Dzięki małym rozmiarom jest wszechstronna i dojedzie także na już zagospodarowane działki.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="label">Kontakt</p>
+        <h2>Zadzwoń, ustalimy termin</h2>
+        <a class="phone-big" href="tel:+48602392337">602 392 337</a>
+        <dl>
+          <div><dt>Firma</dt><dd>Usługi Koparko-Ładowarką<br>Adam Grzywiński</dd></div>
+          <div><dt>Obszar działania</dt><dd>Legionowo i okolice</dd></div>
+          <div><dt>Adres</dt><dd>ul. Suwalna 16A<br>05-119 Łajski</dd></div>
+        </dl>
+      </div>
+      <div>
+        <div class="map">
+          <p class="map-fallback">Mapa wczytuje się z Google.<br>Jeśli się nie pojawi, użyj linku pod spodem.</p>
+          <iframe title="Mapa dojazdu" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=ul.+Suwalna+16A,+05-119+%C5%81ajski&amp;z=15&amp;output=embed"></iframe>
+        </div>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Suwalna+16A,+05-119+%C5%81ajski" target="_blank" rel="noopener">Otwórz w Mapach Google →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Usługi Koparko-Ładowarką Adam Grzywiński</span>
+    <span>Tel. 602 392 337</span>
+  </div>
+</footer>
+
+<script>
+  // Po kliknięciu przycisk krótko miga na pomarańczowo i wraca do zwykłego wyglądu
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      a.blur();
+      a.classList.remove('flash');
+      void a.offsetWidth; // pozwala powtórzyć mignięcie przy kolejnym kliknięciu
+      a.classList.add('flash');
+    });
+    a.addEventListener('animationend', function () { a.classList.remove('flash'); });
+  });
+</script>
+</body>
+</html>
