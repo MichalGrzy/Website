@@ -139,6 +139,7 @@ h2 { font: 900 clamp(36px, 5vw, 54px)/1 var(--display); text-transform: uppercas
 .machine { border: 2px solid #3A3531; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
 .machine-text { padding: 32px; display: grid; gap: 14px; align-content: center; }
 .photo { position: relative; aspect-ratio: 4 / 3; background: #2A2622; display: grid; place-items: center; overflow: hidden; }
+.photo span::before { content: "Miejsce na zdjęcie"; }
 .photo span { font: 500 13px/1.4 var(--body); letter-spacing: .1em; text-transform: uppercase; color: #8A8178; text-align: center; padding: 16px; border: 2px dashed #4A433D; margin: 20px; }
 .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .machine .tag { font: 700 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--asphalt); background: var(--orange); justify-self: start; padding: 6px 9px 5px; }
@@ -324,7 +325,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <p>Każde zlecenie jest dla nas ważne, niezależnie od jego wielkości. Zajmujemy się przede wszystkim pracami ziemnymi: wykopami, równaniem działek i przewozem ziemi. Zadzwoń, opisz, co trzeba zrobić, a ustalimy termin i zakres prac.</p>
       </div>
       <dl class="facts">
-        <div><dt>Obszar działania</dt><dd>Legionowo i okolice<span class="area-note">m.in. Jabłonna, Wieliszew, Nieporęt, Łajski. Znajdujesz się dalej? Zadzwoń, dojazd ustalimy.</span></dd></div>
+        <div><dt>Obszar działania</dt><dd>Legionowo i okolice <span class="area-note">m.in. Jabłonna, Wieliszew, Nieporęt, Łajski. Znajdujesz się dalej? Zadzwoń, dojazd ustalimy.</span></dd></div>
       </dl>
     </div>
   </section>
@@ -371,7 +372,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <h2>Nasz sprzęt</h2>
       <div class="fleet-grid">
         <article class="machine">
-          <div class="photo"><span>Miejsce na zdjęcie<br>koparko-ladowarka.jpg</span><img src="koparko-ladowarka.jpg" alt="Koparko-ładowarka New Holland – roboty ziemne Legionowo" loading="lazy" onerror="this.remove()"></div>
+          <div class="photo"><span aria-hidden="true"></span><img src="koparko-ladowarka.jpg" alt="Koparko-ładowarka New Holland – roboty ziemne Legionowo" loading="lazy" onerror="this.remove()"></div>
           <div class="machine-text">
           <span class="tag">Cięższe zadania</span>
           <h3>Koparko-ładowarka<small>New Holland</small></h3>
@@ -379,7 +380,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           </div>
         </article>
         <article class="machine">
-          <div class="photo"><span>Miejsce na zdjęcie<br>minikoparka.jpg</span><img src="minikoparka.jpg" alt="Minikoparka na gumowych gąsienicach – wykopy Legionowo" loading="lazy" onerror="this.remove()"></div>
+          <div class="photo"><span aria-hidden="true"></span><img src="minikoparka.jpg" alt="Minikoparka na gumowych gąsienicach – wykopy Legionowo" loading="lazy" onerror="this.remove()"></div>
           <div class="machine-text">
           <span class="tag">Trudno dostępne miejsca</span>
           <h3>Minikoparka</h3>
