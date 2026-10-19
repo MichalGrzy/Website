@@ -303,11 +303,12 @@ footer a { display: inline-block; padding-block: 14px; margin-block: -14px; } /*
     display: flex; min-height: 64px;
     padding: 8px max(16px, env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
     box-shadow: 0 -4px 18px rgba(0,0,0,.25);
-    transition: transform .25s ease;
+    transition: translate .25s ease;
   }
   .call-bar .cta-num { font-size: 28px; }
   .call-bar:focus-visible { outline-offset: -7px; box-shadow: none; }
-  /* Pasek jest widoczny cały czas, także po przybliżeniu strony palcami */
+  /* Bez JavaScriptu pasek jest widoczny cały czas; ze skryptem pojawia się, gdy przycisk z góry zniknie z ekranu */
+  .js .call-bar:not(.show) { translate: 0 110%; }
   .to-top { bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
   .foot { padding-bottom: calc(24px + 64px + env(safe-area-inset-bottom, 0px)); }
 }
@@ -613,10 +614,11 @@ footer a { display: inline-block; padding-block: 14px; margin-block: -14px; } /*
     a.addEventListener('animationend', function () { a.classList.remove('flash'); });
   });
 
-  // Przycisk „do góry” pojawia się, gdy pomarańczowy przycisk z góry strony zniknie z ekranu
+  // Pasek „Zadzwoń” i przycisk „do góry” pojawiają się, gdy pomarańczowy przycisk z góry strony zniknie z ekranu
   var toTop = document.getElementById('to-top');
+  var bar = document.getElementById('call-bar');
   var cta = document.querySelector('.hero .cta');
-  function show(on) { toTop.classList.toggle('show', on); }
+  function show(on) { toTop.classList.toggle('show', on); bar.classList.toggle('show', on); }
   if (cta && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
       var e = entries[entries.length - 1];
@@ -626,6 +628,25 @@ footer a { display: inline-block; padding-block: 14px; margin-block: -14px; } /*
     var onScroll = function () { show(window.scrollY > 500); };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+  }
+  // Po przybliżeniu strony dwoma palcami telefon „zostawia” elementy przyklejone do dołu poza widocznym
+  // fragmentem ekranu. Tu dopasowujemy pasek i przycisk do faktycznie widocznej części strony.
+  var vv = window.visualViewport;
+  if (vv) {
+    var pin = function () {
+      var s = vv.scale || 1;
+      if (s <= 1.01) { bar.style.transform = ''; toTop.style.transform = ''; return; }
+      var lw = document.documentElement.clientWidth, lh = document.documentElement.clientHeight;
+      var dy = vv.offsetTop + vv.height - lh;
+      bar.style.transformOrigin = '0 100%';
+      bar.style.transform = 'translate(' + vv.offsetLeft + 'px,' + dy + 'px) scale(' + (1 / s) + ')';
+      toTop.style.transformOrigin = '100% 100%';
+      toTop.style.transform = 'translate(' + (vv.offsetLeft + vv.width - lw) + 'px,' + dy + 'px) scale(' + (1 / s) + ')';
+    };
+    vv.addEventListener('resize', pin);
+    vv.addEventListener('scroll', pin);
+    window.addEventListener('scroll', pin, { passive: true });
+    pin();
   }
   toTop.addEventListener('click', function (e) {
     e.preventDefault();
