@@ -2,29 +2,90 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Usługi Koparko-Ładowarką Adam Grzywiński – Legionowo</title>
 <meta name="description" content="Usługi koparko-ładowarką i minikoparką, Legionowo i okolice, od 1997 roku: roboty ziemne, wykopy, równanie działek, przewóz ziemi. Zadzwoń: 602 392 337.">
+<link rel="canonical" href="https://koparka-legionowo.pl/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1E1B18" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D0C0A" media="(prefers-color-scheme: dark)">
+<!-- Telefony same rozpoznają ciągi cyfr jako numery (np. NIP). Wyłączamy to, numer firmy ma własne linki tel: -->
+<meta name="format-detection" content="telephone=no">
+
+<!-- Podgląd linku w Messengerze, WhatsAppie, SMS-ie i na Facebooku -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="Usługi Koparko-Ładowarką Adam Grzywiński">
+<meta property="og:title" content="Usługi Koparko-Ładowarką Adam Grzywiński – Legionowo">
+<meta property="og:description" content="Roboty ziemne, wykopy, równanie działek i przewóz ziemi. Legionowo i okolice, od 1997 roku. Tel. 602 392 337.">
+<meta property="og:url" content="https://koparka-legionowo.pl/">
+<meta property="og:image" content="https://koparka-legionowo.pl/tlo.jpg">
+<meta property="og:image:width" content="1918">
+<meta property="og:image:height" content="1080">
+<meta property="og:image:alt" content="Minikoparka i koparko-ładowarka New Holland na placu budowy">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23E26A10%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2247%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%20Black%2CArial%2Csans-serif%22%20font-weight%3D%22900%22%20font-size%3D%2244%22%20fill%3D%22%231E1B18%22%3EG%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Big+Shoulders+Display:wght@700;900&display=swap">
+<!-- Czcionki są na naszym serwerze (folder fonts): szybciej na telefonie i bez łączenia się z Google -->
+<link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* Układ: ciemny pas „asfaltu” z hasłem, pod nim przekrój gruntu jako granica, dalej usługi i kontakt z mapą. */
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: url("fonts/big-shoulders-display.woff2") format("woff2");
+  font-weight: 700 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("fonts/archivo.woff2") format("woff2");
+  font-weight: 400 700; font-style: normal; font-display: swap;
+}
+
+/* Układ: telefon najpierw. Ciemny pas z hasłem i przyciskiem „Zadzwoń”, pod nim zdjęcie maszyn,
+   które przechodzi w przekrój gruntu. Dalej: o nas, usługi, sprzęt, kontakt z mapą.
+   Kolory dopasowują się do ustawień telefonu (jasny / ciemny motyw). */
 :root {
-  --orange: #E26A10;       /* kolor maszyny */
-  --orange-ink: #A94C06;   /* pomarańcz do tekstu na jasnym tle */
-  --asphalt: #1E1B18;
-  --ink: #2B2724;
-  --muted: #6B645E;
+  --orange: #E26A10;         /* kolor maszyny: przyciski i akcenty na ciemnym */
+  --orange-hover: #F07B22;
+  --on-orange: #1E1B18;      /* tekst na pomarańczowym (5,1:1) */
+  --orange-ink: #9C4505;     /* pomarańczowy tekst na jasnym (6,4:1) */
+  --night: #1E1B18;          /* nagłówek, hero, sprzęt, stopka */
+  --night-raised: #27221E;
+  --night-line: #3A3531;
+  --frame-line: #4A3F35;
+  --btn-line: #857B72;       /* obrys przycisków na ciemnym (3,8:1) */
+  --on-night: #FFFFFF;
+  --on-night-soft: #D9D2CB;
+  --on-night-dim: #BDB5AD;
   --paper: #FFFFFF;
   --concrete: #EFEDEA;
+  --ink: #2B2724;
+  --muted: #57504A;          /* tekst pomocniczy (7,9:1 na białym) */
   --line: #D9D5D0;
-  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
   --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --orange-ink: #F0883A;
+    --night: #0D0C0A;
+    --night-raised: #1C1916;
+    --night-line: #34302C;
+    --frame-line: #3A332D;
+    --paper: #161412;
+    --concrete: #23201C;
+    --ink: #ECE7E2;
+    --muted: #B5ADA5;
+    --line: #3A3430;
+    color-scheme: dark;
+  }
+}
+@media (prefers-contrast: more) {
+  :root { --muted: var(--ink); --on-night-soft: #FFFFFF; --on-night-dim: #FFFFFF; --btn-line: #FFFFFF; }
+}
+
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { background: var(--night); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   margin: 0;
   background: var(--paper);
@@ -33,6 +94,8 @@ body {
 }
 a { color: inherit; }
 img, svg, iframe { max-width: 100%; }
+p { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
 .wrap {
   max-width: 1120px;
   margin: 0 auto;
@@ -40,186 +103,274 @@ img, svg, iframe { max-width: 100%; }
   padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
 
-/* Pasek górny */
-.top { background: var(--asphalt); color: #fff; padding: 10px max(10px, env(safe-area-inset-left, 0px)) 0 max(10px, env(safe-area-inset-right, 0px)); }
+/* Fokus z klawiatury: biały pierścień z ciemną obwódką, widoczny na każdym tle */
+a:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; box-shadow: 0 0 0 6px #1E1B18; }
+a:focus:not(:focus-visible) { outline: none; }
+[tabindex="-1"]:focus { outline: none; }
+.skip {
+  position: absolute; left: 12px; top: -80px; z-index: 50;
+  padding: 12px 16px; background: var(--orange); color: var(--on-orange);
+  font-weight: 700; text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+/* Nagłówek */
+.top {
+  background: var(--night); color: var(--on-night);
+  padding: 8px max(8px, env(safe-area-inset-right, 0px)) 0 max(8px, env(safe-area-inset-left, 0px));
+}
 .top-frame {
   position: relative; overflow: hidden;
   max-width: 1160px; margin: 0 auto;
-  background: linear-gradient(180deg, #2C2622 0%, #27211D 100%);
-  border: 1px solid #4A3F35;
+  background: var(--night-raised);
+  border: 1px solid var(--frame-line);
 }
 .dunes { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; pointer-events: none; }
-.top-frame .wrap { position: relative; }
-.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 16px; }
+.top-inner {
+  position: relative;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px 24px; padding-block: 14px;
+}
+.brand { display: block; text-decoration: none; padding-block: 2px; }
+.brand b { display: block; font: 900 22px/1.05 var(--display); letter-spacing: .04em; text-transform: uppercase; }
+.brand small { display: block; margin-top: 3px; font: 500 14px/1.3 var(--body); color: var(--on-night-soft); }
 .nav { display: flex; align-items: center; gap: 10px; }
 .nav-btn {
-  font: 700 14px/1 var(--body); letter-spacing: .1em; text-transform: uppercase;
-  color: #fff; text-decoration: none; padding: 11px 16px 10px;
-  border: 2px solid #5A524B; transition: border-color .15s, background .15s, color .15s;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0 18px;
+  font: 700 15px/1 var(--body); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--on-night); text-decoration: none;
+  background: rgba(255,255,255,.04);
+  border: 2px solid var(--btn-line);
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color .15s, background-color .15s, color .15s;
 }
+.nav-btn:active { background: var(--orange); border-color: var(--orange); color: var(--on-orange); }
 @media (hover: hover) { .nav-btn:hover { border-color: var(--orange); color: var(--orange); } }
-.nav-btn:focus:not(:focus-visible) { outline: none; }
-.nav-btn:active { background: var(--orange); border-color: var(--orange); color: var(--asphalt); }
 .nav-btn.flash { animation: navFlash .7s ease-out; }
 @keyframes navFlash {
-  0%, 35% { background: var(--orange); border-color: var(--orange); color: var(--asphalt); }
-  100% { background: transparent; border-color: #5A524B; color: #fff; }
+  0%, 35% { background: var(--orange); border-color: var(--orange); color: var(--on-orange); }
+  100% { background: rgba(255,255,255,.04); border-color: var(--btn-line); color: var(--on-night); }
 }
-@media (prefers-reduced-motion: reduce) { .nav-btn.flash { animation-duration: .3s; } }
-.nav .top-phone { margin-left: 8px; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand b { font: 900 22px/1 var(--display); letter-spacing: .04em; text-transform: uppercase; }
-.brand small { display: block; font: 500 12px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; color: #BDB5AD; margin-top: 3px; }
-.top-phone { font: 700 22px/1 var(--display); letter-spacing: .04em; text-decoration: none; color: var(--orange); white-space: nowrap; }
+.top-phone {
+  display: inline-flex; align-items: center; min-height: 48px; margin-left: 8px;
+  font: 700 24px/1 var(--display); letter-spacing: .04em;
+  color: var(--orange); text-decoration: none; white-space: nowrap;
+}
 
-/* Hero */
-/* Zdjęcie w tle: plik tlo.jpg w tym samym folderze co strona. Bez zdjęcia zostaje ciemne tło. */
-.hero {
-  color: #fff;
-  background-color: var(--asphalt);
-  background-image: linear-gradient(90deg, rgba(30,27,24,.92) 0%, rgba(30,27,24,.82) 50%, rgba(30,27,24,.45) 100%), url("tlo.jpg");
-  background-size: cover;
-  background-position: center 40%;
+/* Hero: na telefonie tekst i przycisk na górze, zdjęcie maszyn pod spodem */
+.hero { position: relative; isolation: isolate; background: var(--night); color: var(--on-night); }
+.hero-inner { padding-block: 36px 0; }
+.hero-tag {
+  display: inline-block; margin: 0 0 18px; padding: 8px 11px 7px;
+  background: var(--orange); color: var(--on-orange);
+  font: 700 14px/1 var(--body); letter-spacing: .14em; text-transform: uppercase;
 }
-.hero .wrap { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; padding-block: 72px 88px; }
 .hero h1 {
   margin: 0;
-  font: 900 clamp(52px, 10vw, 112px)/.88 var(--display);
-  text-transform: uppercase;
-  letter-spacing: .01em;
-  text-wrap: balance;
+  font: 900 clamp(54px, 14vw, 112px)/.88 var(--display);
+  text-transform: uppercase; letter-spacing: .01em;
 }
-.hero h1 span { color: var(--orange); display: block; }
-.hero h1 small { display: block; margin-top: 14px; font: 700 clamp(22px, 3vw, 32px)/1.1 var(--display); letter-spacing: .06em; color: #fff; }
-.hero-eyebrow { margin: 0 0 18px !important; display: inline-block; font: 700 13px/1 var(--body) !important; letter-spacing: .16em; text-transform: uppercase; color: var(--asphalt) !important; background: var(--orange); padding: 7px 10px 6px; text-shadow: none !important; }
-.area-note { display: block; margin-top: 8px; font: 400 15px/1.5 var(--body); text-transform: none; letter-spacing: 0; color: var(--muted); }
-.hero p { margin: 22px 0 30px; max-width: 34ch; font-size: 19px; color: #E6DFD8; }
-.hero h1, .hero p { text-shadow: 0 2px 18px rgba(0,0,0,.45); }
-.cta {
-  display: inline-flex; align-items: baseline; gap: 14px;
-  background: var(--orange); color: var(--asphalt);
-  padding: 14px 24px 12px; text-decoration: none;
-  font: 900 34px/1 var(--display); letter-spacing: .03em;
-  border: 0; transition: background .15s;
+.hero h1 span { display: block; color: var(--orange); }
+.hero h1 small {
+  display: block; margin-top: 14px;
+  font: 700 clamp(24px, 3vw, 32px)/1.1 var(--display); letter-spacing: .06em; color: var(--on-night);
 }
-.cta small { font: 700 13px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; }
-.cta:hover { background: #F07B22; }
-.cta:focus-visible, a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.hero-lead { margin: 20px 0 26px; max-width: 34ch; font-size: 19px; line-height: 1.55; color: var(--on-night-soft); }
+.cta, .call-bar {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  background: var(--orange); color: var(--on-orange); text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.cta { width: 100%; max-width: 440px; min-height: 64px; padding: 10px 20px; transition: background-color .15s, transform .1s; }
+.cta:active, .call-bar:active { filter: brightness(.94); }
+.cta:active { transform: scale(.98); }
+@media (hover: hover) { .cta:hover { background: var(--orange-hover); } }
+.ico { flex: none; width: 24px; height: 24px; }
+.cta-num { font: 900 32px/1 var(--display); letter-spacing: .03em; white-space: nowrap; }
+.cta-label { font: 700 14px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; }
+.hero-photo { display: block; margin-top: 30px; }
+.hero-photo img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 16 / 10; object-fit: cover; object-position: 50% 45%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 30%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 30%);
+}
 
 /* Przekrój gruntu */
-.strata { display: block; width: 100%; height: 64px; background: var(--asphalt); }
+.strata { display: block; width: 100%; height: 56px; background: var(--night); }
 
 /* Sekcje */
-section { padding-block: 64px; }
-.label { font: 700 13px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--orange-ink); margin: 0 0 12px; }
-h2 { font: 900 clamp(36px, 5vw, 54px)/1 var(--display); text-transform: uppercase; margin: 0 0 36px; text-wrap: balance; }
-.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 4px solid var(--asphalt); }
-.service { padding: 26px 28px 8px 0; }
-.service + .service { padding-left: 28px; border-left: 1px solid var(--line); }
-.service h3 { font: 700 30px/1 var(--display); text-transform: uppercase; margin: 0 0 12px; letter-spacing: .02em; }
-.service p { margin: 0 0 14px; color: var(--muted); }
-.service ul { margin: 0; padding: 0; list-style: none; }
-.service li { padding: 7px 0; border-top: 1px solid var(--line); }
-.service li::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--orange); margin-right: 10px; vertical-align: 1px; }
+section { padding-block: 56px; }
+.label { margin: 0 0 10px; font: 700 15px/1.2 var(--body); letter-spacing: .02em; color: var(--orange-ink); }
+h2 {
+  margin: 0 0 28px;
+  font: 900 clamp(38px, 5.2vw, 56px)/.98 var(--display);
+  text-transform: uppercase; letter-spacing: .01em;
+}
 
 /* O nas */
-.about-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: start; }
-.about-grid h2 { margin-bottom: 20px; }
-.about-text p:not(.label) { margin: 0 0 14px; max-width: 60ch; font-size: 18px; }
-.facts { margin: 0; border-top: 4px solid var(--asphalt); }
+.about { background: var(--paper); }
+.about-grid { display: grid; gap: 32px; }
+.about-text h2 { margin-bottom: 18px; }
+.about-text p:not(.label) { margin: 0 0 14px; max-width: 62ch; font-size: 18px; }
+.facts { margin: 0; border-top: 4px solid var(--ink); }
 .facts div { padding: 16px 0; border-bottom: 1px solid var(--line); }
-.facts dt { font: 700 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-.facts dd { margin: 0; font: 700 32px/1.05 var(--display); text-transform: uppercase; letter-spacing: .02em; }
-.facts .area-note { font-size: 16px; margin-top: 10px; }
-#uslugi { background: var(--concrete); }
-/* Sprzęt */
-.fleet { background: var(--asphalt); color: #fff; }
-.fleet .label { color: var(--orange); }
-.fleet-grid { display: grid; gap: 24px; }
-.machine { border: 2px solid #3A3531; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
-.machine-text { padding: 32px; display: grid; gap: 14px; align-content: center; }
-.photo { position: relative; aspect-ratio: 4 / 3; background: #2A2622; display: grid; place-items: center; overflow: hidden; }
-.photo span::before { content: "Miejsce na zdjęcie"; }
-.photo span { font: 500 13px/1.4 var(--body); letter-spacing: .1em; text-transform: uppercase; color: #8A8178; text-align: center; padding: 16px; border: 2px dashed #4A433D; margin: 20px; }
+.facts dt { margin-bottom: 8px; font: 600 14px/1.2 var(--body); color: var(--muted); }
+.facts dd { margin: 0; font: 700 34px/1.05 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.area-note { display: block; margin-top: 10px; font: 400 16px/1.5 var(--body); text-transform: none; letter-spacing: 0; color: var(--muted); }
+
+/* Co robimy */
+.services-sec { background: var(--concrete); }
+.services { display: grid; border-top: 4px solid var(--ink); }
+.service { padding: 24px 0 12px; }
+.service + .service { border-top: 1px solid var(--line); }
+.service h3 { margin: 0 0 10px; font: 700 30px/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.service p { margin: 0 0 14px; color: var(--muted); }
+.service ul { margin: 0; padding: 0; list-style: none; }
+.service li { padding: 9px 0; border-top: 1px solid var(--line); }
+.service li::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 11px; vertical-align: 1px; background: var(--orange); }
+
+/* Nasz sprzęt */
+.fleet { background: var(--night); color: var(--on-night); }
+.fleet-grid { display: grid; gap: 20px; }
+.machine { display: grid; border: 2px solid var(--night-line); }
+.photo { position: relative; aspect-ratio: 4 / 3; background: var(--night-raised); overflow: hidden; }
 .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.machine .tag { font: 700 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--asphalt); background: var(--orange); justify-self: start; padding: 6px 9px 5px; }
-.machine h3 { font: 900 clamp(32px, 4vw, 44px)/1 var(--display); text-transform: uppercase; margin: 0; letter-spacing: .01em; }
-.machine h3 small { display: block; margin-top: 6px; font: 700 clamp(20px, 2.4vw, 26px)/1 var(--display); letter-spacing: .06em; color: var(--orange); }
-.machine p { margin: 0; color: #CFC7BF; }
+.machine-text { display: grid; gap: 12px; align-content: center; padding: 24px; }
+.tag {
+  justify-self: start; padding: 7px 10px 6px;
+  background: var(--orange); color: var(--on-orange);
+  font: 700 14px/1 var(--body); letter-spacing: .1em; text-transform: uppercase;
+}
+.machine h3 { margin: 0; font: 900 clamp(34px, 4vw, 44px)/1 var(--display); text-transform: uppercase; letter-spacing: .01em; }
+.machine h3 small { display: block; margin-top: 6px; font: 700 clamp(22px, 2.4vw, 26px)/1 var(--display); letter-spacing: .06em; color: var(--orange); }
+.machine p { margin: 0; color: var(--on-night-soft); }
+
 /* Kontakt */
 .contact { background: var(--paper); }
-.contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; align-items: stretch; }
-.phone-big { font: 900 clamp(44px, 6vw, 64px)/1 var(--display); letter-spacing: .02em; text-decoration: none; color: var(--asphalt); display: inline-block; border-bottom: 5px solid var(--orange); padding-bottom: 4px; }
-.contact dl { margin: 32px 0 0; display: grid; gap: 18px; }
-.contact dt { font: 700 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-.contact dd { margin: 0; font-size: 18px; }
-.num { font-variant-numeric: tabular-nums; user-select: all; }
-.map { position: relative; min-height: 380px; background: var(--concrete); border: 1px solid var(--line); }
-.map-fallback { position: absolute; inset: 0; margin: 0; display: grid; place-items: center; text-align: center; padding: 20px; color: var(--muted); font-size: 15px; }
+.contact-grid { display: grid; gap: 32px; }
+.phone-big {
+  display: inline-block; padding-bottom: 4px;
+  font: 900 clamp(50px, 13vw, 66px)/1 var(--display); letter-spacing: .02em;
+  color: var(--ink); text-decoration: none; border-bottom: 5px solid var(--orange);
+}
+.contact-note { margin: 16px 0 0; max-width: 38ch; color: var(--muted); }
+.contact-dl { margin: 26px 0 0; }
+.contact-dl dt { margin-bottom: 6px; font: 600 14px/1.2 var(--body); color: var(--muted); }
+.contact-dl dd { margin: 0; font-size: 18px; }
+.map { position: relative; min-height: 300px; background: var(--concrete); border: 1px solid var(--line); }
+.map-fallback { position: absolute; inset: 0; margin: 0; display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); font-size: 15px; }
 .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
-.map-link { display: inline-block; margin-top: 12px; font-weight: 500; color: var(--orange-ink); }
-
-footer { background: var(--asphalt); color: #A8A098; font-size: 14px; }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 22px; }
-
-@media (max-width: 820px) {
-  .hero { background-image: linear-gradient(rgba(30,27,24,.84), rgba(30,27,24,.84)), url("tlo.jpg"); }
-  .hero .wrap { grid-template-columns: 1fr; gap: 28px; padding-block: 36px 44px; }
-  .services, .about-grid, .machine { grid-template-columns: 1fr; }
-  .machine-text { padding: 24px; }
-  .about-grid { gap: 28px; }
-  .service, .service + .service { padding: 24px 0 10px; border-left: 0; }
-  .service + .service { border-top: 1px solid var(--line); }
-  .contact-grid { grid-template-columns: 1fr; }
-  .map { min-height: 320px; }
+.map-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; margin-top: 14px; padding: 0 18px;
+  border: 2px solid var(--ink); color: var(--ink); text-decoration: none;
+  font: 700 16px/1 var(--body);
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color .15s;
 }
-@media (max-width: 480px) {
-  .top-phone { font-size: 19px; }
-  .nav { width: 100%; }
-  .nav-btn { flex: 1; text-align: center; padding-inline: 8px; }
-  .nav .top-phone { display: none; }
-  .cta { font-size: 28px; padding: 12px 18px 10px; }
-  section { padding-block: 48px; }
-}
+.map-btn .ico { width: 22px; height: 22px; color: var(--orange); }
+.map-btn:active { background: var(--concrete); }
+@media (hover: hover) { .map-btn:hover { border-color: var(--orange); } }
+
+/* Stopka */
+footer { background: var(--night); color: var(--on-night-dim); font-size: 14px; }
+footer a { display: inline-block; padding-block: 14px; margin-block: -14px; } /* większe pole dotyku bez zmiany układu */
+.foot { display: flex; flex-direction: column; gap: 6px; padding-block: 24px; }
+
+/* Pasek „Zadzwoń” (telefon) i przycisk „do góry” */
+.call-bar { display: none; }
 .to-top {
-  position: fixed; z-index: 20;
-  right: calc(20px + env(safe-area-inset-right, 0px));
+  position: fixed; z-index: 31;
+  right: calc(16px + env(safe-area-inset-right, 0px));
   bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-  width: 54px; height: 54px; border-radius: 50%;
+  width: 52px; height: 52px; border-radius: 50%;
   display: grid; place-items: center;
-  background: var(--orange); color: var(--asphalt);
+  background: var(--orange); color: var(--on-orange);
   box-shadow: 0 6px 18px rgba(0,0,0,.28);
   opacity: 0; transform: translateY(12px); pointer-events: none;
-  transition: opacity .25s, transform .25s, background .15s;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity .25s, transform .25s, background-color .15s;
 }
 .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
-@media (hover: hover) { .to-top:hover { background: #F07B22; } }
-.to-top:focus:not(:focus-visible) { outline: none; }
-.call-bar { display: none; }
+.to-top:active { filter: brightness(.94); }
+@media (hover: hover) { .to-top:hover { background: var(--orange-hover); } }
+
 @media (max-width: 820px) {
   .call-bar {
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 19;
-    min-height: 60px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    display: flex; min-height: 64px;
     padding: 8px max(16px, env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
-    background: var(--orange); color: var(--asphalt); text-decoration: none;
-    font: 900 26px/1 var(--display); letter-spacing: .03em;
-    box-shadow: 0 -4px 16px rgba(0,0,0,.22);
-    transform: translateY(110%); transition: transform .25s;
+    box-shadow: 0 -4px 18px rgba(0,0,0,.25);
+    transition: transform .25s ease;
   }
-  .call-bar.show { transform: none; }
-  .call-bar svg { flex: none; }
-  .call-bar small { font: 700 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; }
-  .to-top { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); width: 48px; height: 48px; }
-  footer .wrap { padding-bottom: calc(22px + 60px + env(safe-area-inset-bottom, 0px)); }
+  .call-bar .cta-num { font-size: 28px; }
+  .call-bar:focus-visible { outline-offset: -7px; box-shadow: none; }
+  /* Bez JavaScriptu pasek jest widoczny cały czas; ze skryptem pojawia się, gdy przycisk z góry zniknie z ekranu */
+  .js .call-bar:not(.show) { transform: translateY(110%); }
+  .to-top { bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
+  .foot { padding-bottom: calc(24px + 64px + env(safe-area-inset-bottom, 0px)); }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cta, .to-top, .call-bar { transition: none; } }
+@media (max-width: 380px) {
+  .cta { padding-inline: 14px; gap: 10px; }
+  .cta-num { font-size: 30px; }
+}
+/* Bardzo wąskie telefony: sama słuchawka i numer, żeby nic się nie ucinało */
+@media (max-width: 349px) {
+  .cta-label { display: none; }
+}
+@media (max-width: 560px) {
+  .nav { width: 100%; }
+  .nav-btn { flex: 1; }
+  .nav .top-phone { display: none; }
+  .map-btn { width: 100%; }
+}
+
+/* Komputer i tablet poziomo */
+@media (min-width: 821px) {
+  section { padding-block: 76px; }
+  .hero-inner { padding-block: 76px 92px; }
+  .cta { display: inline-flex; width: auto; justify-content: flex-start; padding: 12px 26px; }
+  .hero-photo { position: absolute; inset: 0; z-index: -2; margin: 0; }
+  .hero-photo img { height: 100%; aspect-ratio: auto; object-position: center 40%; -webkit-mask-image: none; mask-image: none; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(90deg, rgba(30,27,24,.93) 0%, rgba(30,27,24,.82) 50%, rgba(30,27,24,.42) 100%);
+  }
+  .hero h1, .hero-lead { text-shadow: 0 2px 18px rgba(0,0,0,.45); }
+  .about-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: start; }
+  .services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .service { padding: 26px 28px 8px 0; }
+  .service + .service { border-top: 0; border-left: 1px solid var(--line); padding-left: 28px; }
+  .machine { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+  .machine-text { padding: 32px; }
+  .contact-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; }
+  .map { min-height: 400px; }
+  .map-btn { display: inline-flex; }
+  .foot { flex-direction: row; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+}
+
+/* Ciemny motyw: sekcje oddzielone cienką linią, bo ciemne tła są do siebie podobne */
+@media (prefers-color-scheme: dark) {
+  .services-sec, .contact { border-top: 1px solid var(--line); }
+  footer { border-top: 1px solid var(--night-line); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .nav-btn, .cta, .call-bar, .to-top, .map-btn { transition: none; }
+  .nav-btn.flash { animation-duration: .3s; }
+  .cta:active { transform: none; }
+}
+.num { font-variant-numeric: tabular-nums; }
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
   "name": "Usługi Koparko-Ładowarką Adam Grzywiński",
+  "url": "https://koparka-legionowo.pl/",
+  "image": "https://koparka-legionowo.pl/tlo.jpg",
   "description": "Roboty ziemne, wykopy, równanie działek i przewóz ziemi koparko-ładowarką i minikoparką. Legionowo i okolice.",
   "telephone": "+48602392337",
   "foundingDate": "1997",
@@ -242,26 +393,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     "addressCountry": "PL"
   },
   "areaServed": [
-    {
-      "@type": "City",
-      "name": "Legionowo"
-    },
-    {
-      "@type": "City",
-      "name": "Jabłonna"
-    },
-    {
-      "@type": "City",
-      "name": "Wieliszew"
-    },
-    {
-      "@type": "City",
-      "name": "Nieporęt"
-    },
-    {
-      "@type": "City",
-      "name": "Łajski"
-    }
+    { "@type": "City", "name": "Legionowo" },
+    { "@type": "City", "name": "Jabłonna" },
+    { "@type": "City", "name": "Wieliszew" },
+    { "@type": "City", "name": "Nieporęt" },
+    { "@type": "City", "name": "Łajski" }
   ],
   "knowsAbout": [
     "roboty ziemne",
@@ -273,8 +409,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   ]
 }
 </script>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+<a class="skip" href="#tresc">Przejdź do treści</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></symbol>
+</svg>
 
 <header class="top">
   <div class="top-frame">
@@ -283,29 +426,35 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <path d="M0 80 V70 C120 68 200 58 300 60 C410 62 460 72 560 72 C660 72 720 60 820 60 C930 60 990 72 1080 70 C1120 69 1145 66 1160 65 V80Z" fill="#C98A4B" opacity=".16"/>
       <path d="M760 80 C800 80 830 62 880 54 C925 47 950 52 985 62 C1015 70 1040 80 1060 80Z" fill="#C98A4B" opacity=".14"/>
     </svg>
-    <div class="wrap">
+    <div class="wrap top-inner">
       <a class="brand" href="#">
-        <span><b>Usługi Koparko-Ładowarką</b><small>Adam Grzywiński</small></span>
+        <b>Usługi Koparko-Ładowarką</b><small>Adam Grzywiński</small>
       </a>
       <nav class="nav" aria-label="Menu">
-        <a class="nav-btn" href="#o-nas">O nas</a>
+        <a class="nav-btn" href="#o-nas">O nas</a>
         <a class="nav-btn" href="#kontakt">Kontakt</a>
-        <a class="top-phone" href="tel:+48602392337">602 392 337</a>
+        <a class="top-phone" href="tel:+48602392337">602 392 337</a>
       </nav>
     </div>
   </div>
 </header>
 
-<main>
+<main id="tresc" tabindex="-1">
   <div class="hero">
-    <div class="wrap">
-      <div>
-        <p class="hero-eyebrow">Od 1997 roku</p>
-        <h1>Usługi koparko-<span>ładowarką</span><small>Legionowo i okolice</small></h1>
-        <p>Roboty ziemne, wykopy i przewóz ziemi. Przyjedziemy, wykopiemy, wyrównamy i wywieziemy urobek.</p>
-        <a class="cta" href="tel:+48602392337">602 392 337 <small>Zadzwoń</small></a>
-      </div>
+    <div class="wrap hero-inner">
+      <p class="hero-tag">Od 1997 roku</p>
+      <h1>Usługi koparko-<span>ładowarką</span><small>Legionowo i okolice</small></h1>
+      <p class="hero-lead">Roboty ziemne, wykopy i przewóz ziemi. Przyjedziemy, wykopiemy, wyrównamy i wywieziemy urobek.</p>
+      <a class="cta" href="tel:+48602392337" aria-label="Zadzwoń: 602 392 337">
+        <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
+        <span class="cta-num">602 392 337</span>
+        <span class="cta-label">Zadzwoń</span>
+      </a>
     </div>
+    <picture class="hero-photo">
+      <source type="image/webp" srcset="tlo-800.webp 800w, tlo-1280.webp 1280w, tlo-1920.webp 1920w" sizes="100vw">
+      <img src="tlo.jpg" width="1918" height="1080" alt="Minikoparka i koparko-ładowarka New Holland przy wykopie" fetchpriority="high" decoding="async">
+    </picture>
   </div>
 
   <!-- Przekrój gruntu: humus, glina, piasek, żwir -->
@@ -316,50 +465,49 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <path d="M0 0 H1200 V12 C1000 16 800 8 600 14 C400 20 200 10 0 16Z" fill="#3D2E22"/>
   </svg>
 
-  <section id="o-nas">
+  <section id="o-nas" class="about" tabindex="-1">
     <div class="wrap about-grid">
       <div class="about-text">
-        <p class="label">O nas</p>
-        <h2>Roboty ziemne w Legionowie i okolicach</h2>
-        <p>Działamy nieprzerwanie od 1997 roku na terenie Legionowa i okolic. Przez te lata współpracowaliśmy z wieloma klientami, zarówno indywidualnymi, jak i dużymi firmami.</p>
-        <p>Każde zlecenie jest dla nas ważne, niezależnie od jego wielkości. Zajmujemy się przede wszystkim pracami ziemnymi: wykopami, równaniem działek i przewozem ziemi. Zadzwoń, opisz, co trzeba zrobić, a ustalimy termin i zakres prac.</p>
+        <p class="label">O nas</p>
+        <h2>Roboty ziemne w Legionowie i okolicach</h2>
+        <p>Działamy nieprzerwanie od 1997 roku na terenie Legionowa i okolic. Przez te lata współpracowaliśmy z wieloma klientami, zarówno indywidualnymi, jak i dużymi firmami.</p>
+        <p>Każde zlecenie jest dla nas ważne, niezależnie od jego wielkości. Zajmujemy się przede wszystkim pracami ziemnymi: wykopami, równaniem działek i przewozem ziemi. Zadzwoń, opisz, co trzeba zrobić, a ustalimy termin i zakres prac.</p>
       </div>
       <dl class="facts">
-        <div><dt>Obszar działania</dt><dd>Legionowo i okolice <span class="area-note">m.in. Jabłonna, Wieliszew, Nieporęt, Łajski. Znajdujesz się dalej? Zadzwoń, dojazd ustalimy.</span></dd></div>
+        <div><dt>Obszar działania</dt><dd>Legionowo i okolice <span class="area-note">m.in. Jabłonna, Wieliszew, Nieporęt, Łajski. Znajdujesz się dalej? Zadzwoń, dojazd ustalimy.</span></dd></div>
       </dl>
     </div>
   </section>
 
-  <section id="uslugi">
+  <section id="uslugi" class="services-sec">
     <div class="wrap">
-      <p class="label">Zakres prac</p>
       <h2>Co robimy</h2>
       <div class="services">
         <article class="service">
           <h3>Roboty ziemne</h3>
           <p>Przygotowanie terenu pod budowę, podjazd lub ogród.</p>
           <ul>
-            <li>Niwelacja i wyrównanie działki</li>
-            <li>Korytowanie pod kostkę i drogi</li>
-            <li>Zasypywanie i zagęszczanie</li>
+            <li>Niwelacja i wyrównanie działki</li>
+            <li>Korytowanie pod kostkę i drogi</li>
+            <li>Zasypywanie i zagęszczanie</li>
           </ul>
         </article>
         <article class="service">
           <h3>Wykopy</h3>
-          <p>Wykopy pod fundamenty i instalacje, z odkładem lub wywozem ziemi.</p>
+          <p>Wykopy pod fundamenty i instalacje, z odkładem lub wywozem ziemi.</p>
           <ul>
-            <li>Pod fundamenty i ławy</li>
-            <li>Przyłącza wod-kan i prądu</li>
+            <li>Pod fundamenty i ławy</li>
+            <li>Przyłącza wod-kan i prądu</li>
             <li>Szamba, drenaże, oczka wodne</li>
           </ul>
         </article>
         <article class="service">
           <h3>Przewóz ziemi</h3>
-          <p>Wywóz urobku z wykopu i dowóz materiału na plac budowy.</p>
+          <p>Wywóz urobku z wykopu i dowóz materiału na plac budowy.</p>
           <ul>
-            <li>Wywóz ziemi z wykopu</li>
+            <li>Wywóz ziemi z wykopu</li>
             <li>Dowóz ziemi</li>
-            <li>Dowóz piasku i żwiru</li>
+            <li>Dowóz piasku i żwiru</li>
           </ul>
         </article>
       </div>
@@ -368,82 +516,97 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
   <section class="fleet" id="sprzet">
     <div class="wrap">
-      <p class="label">Sprzęt</p>
       <h2>Nasz sprzęt</h2>
       <div class="fleet-grid">
         <article class="machine">
-          <div class="photo"><span aria-hidden="true"></span><img src="koparko-ladowarka.jpg" alt="Koparko-ładowarka New Holland – roboty ziemne Legionowo" loading="lazy" onerror="this.remove()"></div>
+          <div class="photo">
+            <picture>
+              <source type="image/webp" srcset="koparko-ladowarka.webp">
+              <img src="koparko-ladowarka.jpg" width="1200" height="900" alt="Koparko-ładowarka New Holland – roboty ziemne Legionowo" loading="lazy" decoding="async">
+            </picture>
+          </div>
           <div class="machine-text">
-          <span class="tag">Cięższe zadania</span>
-          <h3>Koparko-ładowarka<small>New Holland</small></h3>
-          <p>Koparko-ładowarkę wykorzystujemy do cięższych zadań. Dzięki jej wielozadaniowości kończymy pracę szybciej, co pozwala zaoszczędzić czas i pieniądze.</p>
+            <span class="tag">Cięższe zadania</span>
+            <h3>Koparko-ładowarka<small>New Holland</small></h3>
+            <p>Koparko-ładowarkę wykorzystujemy do cięższych zadań. Dzięki jej wielozadaniowości kończymy pracę szybciej, co pozwala zaoszczędzić czas i pieniądze.</p>
           </div>
         </article>
         <article class="machine">
-          <div class="photo"><span aria-hidden="true"></span><img src="minikoparka.jpg" alt="Minikoparka na gumowych gąsienicach – wykopy Legionowo" loading="lazy" onerror="this.remove()"></div>
+          <div class="photo">
+            <picture>
+              <source type="image/webp" srcset="minikoparka.webp">
+              <img src="minikoparka.jpg" width="900" height="675" alt="Minikoparka na gumowych gąsienicach – wykopy Legionowo" loading="lazy" decoding="async">
+            </picture>
+          </div>
           <div class="machine-text">
-          <span class="tag">Trudno dostępne miejsca</span>
-          <h3>Minikoparka</h3>
-          <p>Minikoparkę wykorzystujemy do mniejszych zadań. Ma gumowe gąsienice, więc bez problemu wjeżdża na posesje z kostką brukową. Dzięki małym rozmiarom jest wszechstronna i dojedzie także na już zagospodarowane działki.</p>
+            <span class="tag">Trudno dostępne miejsca</span>
+            <h3>Minikoparka</h3>
+            <p>Minikoparkę wykorzystujemy do mniejszych zadań. Ma gumowe gąsienice, więc bez problemu wjeżdża na posesje z kostką brukową. Dzięki małym rozmiarom jest wszechstronna i dojedzie także na już zagospodarowane działki.</p>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="contact" id="kontakt">
+  <section class="contact" id="kontakt" tabindex="-1">
     <div class="wrap contact-grid">
       <div>
         <p class="label">Kontakt</p>
         <h2>Zadzwoń, ustalimy termin</h2>
-        <a class="phone-big" href="tel:+48602392337">602 392 337</a>
-        <dl>
-          <div><dt>Adres</dt><dd>ul. Suwalna 16A<br>05-119 Łajski</dd></div>
+        <a class="phone-big" href="tel:+48602392337">602 392 337</a>
+        <p class="contact-note">Jeśli nie odbieramy, jesteśmy pewnie przy pracy. Oddzwonimy.</p>
+        <dl class="contact-dl">
+          <div><dt>Adres</dt><dd>ul. Suwalna 16A<br>05-119 Łajski</dd></div>
         </dl>
       </div>
       <div>
         <div class="map">
-          <p class="map-fallback">Mapa wczytuje się z Google.<br>Jeśli się nie pojawi, użyj linku pod spodem.</p>
-          <iframe title="Mapa dojazdu" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          <p class="map-fallback">Mapa wczytuje się z Google.<br>Jeśli się nie pojawi, użyj przycisku pod spodem.</p>
+          <iframe title="Mapa: ul. Suwalna 16A, 05-119 Łajski" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             src="https://maps.google.com/maps?q=ul.+Suwalna+16A,+05-119+%C5%81ajski&amp;z=15&amp;output=embed"></iframe>
         </div>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Suwalna+16A,+05-119+%C5%81ajski" target="_blank" rel="noopener">Otwórz w Mapach Google →</a>
+        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Suwalna+16A,+05-119+%C5%81ajski" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Otwórz w Mapach Google
+        </a>
       </div>
     </div>
   </section>
 </main>
 
-<a href="tel:+48602392337" class="call-bar" id="call-bar" aria-label="Zadzwoń: 602 392 337" hidden>
-  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
-  <span>602 392 337</span> <small>Zadzwoń</small>
+<a class="call-bar" id="call-bar" href="tel:+48602392337" aria-label="Zadzwoń: 602 392 337">
+  <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
+  <span class="cta-num">602 392 337</span>
+  <span class="cta-label">Zadzwoń</span>
 </a>
 
-<a href="#" class="to-top" id="to-top" aria-label="Wróć na górę strony" hidden>
+<a href="#" class="to-top" id="to-top" aria-label="Wróć na górę strony">
   <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 5 L5 12 M12 5 L19 12 M12 5 V20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg>
 </a>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap foot">
     <span>© 2026 Usługi Koparko-Ładowarką Adam Grzywiński</span>
-    <span><span class="num">NIP 536-123-90-73</span> · <span class="num">REGON 012360686</span></span>
-    <span>Tel. 602 392 337</span>
+    <span class="num">NIP 536-123-90-73, REGON 012360686</span>
+    <span>Tel. <a href="tel:+48602392337">602 392 337</a></span>
   </div>
 </footer>
 
 <script>
-  // Po kliknięciu przycisk krótko miga na pomarańczowo i wraca do zwykłego wyglądu
-  document.querySelectorAll('.nav a').forEach(function (a) {
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Przyciski „O nas” i „Kontakt”: płynne przewinięcie do sekcji, krótkie mignięcie
+  // i przeniesienie fokusu na sekcję, żeby przycisk nie zostawał podświetlony
+  document.querySelectorAll('.nav-btn').forEach(function (a) {
     a.addEventListener('click', function (e) {
-      // Przewiń do sekcji skryptem – działa też w podglądach, które blokują skoki do #kotwic
       var id = a.getAttribute('href');
       var target = id && id.charAt(0) === '#' ? document.querySelector(id) : null;
       if (target) {
         e.preventDefault();
-        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        try { target.focus({ preventScroll: true }); } catch (err) { a.blur(); }
         try { history.replaceState(null, '', id); } catch (err) {}
       }
-      a.blur();
       a.classList.remove('flash');
       void a.offsetWidth; // pozwala powtórzyć mignięcie przy kolejnym kliknięciu
       a.classList.add('flash');
@@ -451,25 +614,27 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     a.addEventListener('animationend', function () { a.classList.remove('flash'); });
   });
 
-  // Przycisk „do góry” i pasek „Zadzwoń” (telefon) pojawiają się po przewinięciu strony
-  (function () {
-    var btn = document.getElementById('to-top');
-    var bar = document.getElementById('call-bar');
-    btn.hidden = false;
-    bar.hidden = false;
-    function update() {
-      var down = window.scrollY > 400;
-      btn.classList.toggle('show', down);
-      bar.classList.toggle('show', down);
-    }
-    window.addEventListener('scroll', update, { passive: true });
-    update();
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      btn.blur();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  })();
+  // Pasek „Zadzwoń” i przycisk „do góry” pojawiają się, gdy pomarańczowy przycisk z góry strony zniknie z ekranu
+  var toTop = document.getElementById('to-top');
+  var bar = document.getElementById('call-bar');
+  var cta = document.querySelector('.hero .cta');
+  function show(on) { toTop.classList.toggle('show', on); bar.classList.toggle('show', on); }
+  if (cta && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      var e = entries[entries.length - 1];
+      show(!e.isIntersecting && e.boundingClientRect.top < 0);
+    }).observe(cta);
+  } else {
+    var onScroll = function () { show(window.scrollY > 500); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+  toTop.addEventListener('click', function (e) {
+    e.preventDefault();
+    toTop.blur();
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+})();
 </script>
 </body>
 </html>
