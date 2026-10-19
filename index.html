@@ -307,8 +307,7 @@ footer a { display: inline-block; padding-block: 14px; margin-block: -14px; } /*
   }
   .call-bar .cta-num { font-size: 28px; }
   .call-bar:focus-visible { outline-offset: -7px; box-shadow: none; }
-  /* Bez JavaScriptu pasek jest widoczny cały czas; ze skryptem pojawia się, gdy przycisk z góry zniknie z ekranu */
-  .js .call-bar:not(.show) { transform: translateY(110%); }
+  /* Pasek jest widoczny cały czas, także po przybliżeniu strony palcami */
   .to-top { bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
   .foot { padding-bottom: calc(24px + 64px + env(safe-area-inset-bottom, 0px)); }
 }
@@ -614,11 +613,10 @@ footer a { display: inline-block; padding-block: 14px; margin-block: -14px; } /*
     a.addEventListener('animationend', function () { a.classList.remove('flash'); });
   });
 
-  // Pasek „Zadzwoń” i przycisk „do góry” pojawiają się, gdy pomarańczowy przycisk z góry strony zniknie z ekranu
+  // Przycisk „do góry” pojawia się, gdy pomarańczowy przycisk z góry strony zniknie z ekranu
   var toTop = document.getElementById('to-top');
-  var bar = document.getElementById('call-bar');
   var cta = document.querySelector('.hero .cta');
-  function show(on) { toTop.classList.toggle('show', on); bar.classList.toggle('show', on); }
+  function show(on) { toTop.classList.toggle('show', on); }
   if (cta && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
       var e = entries[entries.length - 1];
